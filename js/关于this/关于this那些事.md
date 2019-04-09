@@ -1,5 +1,3 @@
-> 本次主要总结在ES5，或者确切一点，是非箭头函数情况下的this。
-
 > 果然，人尼玛都是有惰性的，我...食言了。上周没有更新，罪过罪过。
 
 **1. this指向调用者**
@@ -103,4 +101,40 @@ setTimeout(function () {
 })();
 ```
 
-> ES6中的箭头函数的`this`，又是另一种机制了，我现在了解的也不是特别的透彻。研究一下再总结。
+**6. ES6中的箭头函数的this**
+```
+var name = 'Tom',
+var obj = {
+    name: 'Jack',
+    sayName1: function () {
+        console.log(this.name); // Jack
+    },
+    sayName2: () => {
+        console.log(this.name); // Tom
+    }
+}
+```
+### ***箭头函数中没有`this`，其`this`来自于父执行上下中的`this`。***
+
+### ***父！执！行！上！下！文！***
+
+上面的代码中，`obj`是个简单对象，没有上下文。所以，`sayName2`的***父执行上下文***就是***全局上下文***，即`window`。所以输出`Tom`。
+
+```
+var obj = {
+  name: 'a',
+  fn: function () {
+    var f = () => {
+      console.log(this);
+    }
+    f();
+  }
+}
+obj.fn(); // obj
+var fn = obj.fn;
+fn(); // window
+```
+
+上面的代码中，`obj.fn`是个函数，有执行上下文。`f`是箭头函数，其`this`来自`obj.fn`。所以，执行`obj.fn()`时，`fn`的`this`是`obj`(具体原因见第一条原则)，而`f`的`this`来源于`fn`，所以，`f`的`this`指向`obj`。
+
+执行`fn()`时，`fn`的`this`为`window`，此时，`f`的`this`也为`window`

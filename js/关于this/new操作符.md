@@ -12,13 +12,13 @@
 ```
 function myNew (fn) {
     var obj = {};
-    fn.call(obj);
+    fn.apply(obj);
     return obj;
 }
 
 ```
 
-问题是，当使用`instanceof`检测类型时是有问题的。
+这样是有问题的。因为没有考虑原型。这样不但无法调用原型上的方法，而且使用`instanceof`检测类型时也是有问题的。
 
 ```
 function Person () {
@@ -34,13 +34,13 @@ console.log(p1 instanceof Person); // true
 console.log(p2 instanceof Person); // false
 `````
 
-分析原因也很简单，因为`p2`的原型指向`Object.prototype`。所以，需要手动改变一下其原型的指向。
+因为`p2`的原型指向`Object.prototype`。所以，需要手动改变一下其原型的指向。
 
 ```
 function myNew(fn) {
     var obj = {};
     obj.__proto__ = fn.prototype; // 改变这个对象的原型指向
-    fn.call(obj);
+    fn.apply(obj);
     return obj;
 }
 var p2 = myNew(Person);
@@ -57,7 +57,7 @@ function myNew(constructor) {
     var args = Array.prototype.slice.call(arguments, 1);
     var obj = {};
     obj.__proto__ = constructor.prototype; // 改变这个对象的原型指向
-    var ret = constructor.call(constructor, args);
+    var ret = constructor.apply(obj, args);
     if (ret && ret instanceof Object) {
         return ret;
     }

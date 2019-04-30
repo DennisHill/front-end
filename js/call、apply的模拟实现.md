@@ -85,11 +85,11 @@ Function.prototype.myCall = function () {
             that = new String(that);
             break;
         case 'undefined':
-            that = Window;
+            that = window;
             break;
         default: 
             if (that === null) {
-                that = Window;
+                that = window;
             }
             break;
     }
@@ -125,11 +125,11 @@ Function.prototype.myApply = function () {
             that = new String(that);
             break;
         case 'undefined':
-            that = Window;
+            that = window;
             break;
         default: 
             if (that === null) {
-                that = Window;
+                that = window;
             }
             break;
     }

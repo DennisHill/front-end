@@ -1,0 +1,816 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>闭包-2 · 朱灌楠</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="朱灌楠">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="闭包-3.html" />
+    
+    
+    <link rel="prev" href="闭包-1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../css/">
+            
+                <a href="../css/">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    css
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../css/css的权重.html">
+            
+                <a href="../css/css的权重.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    css的权重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../css/flex布局.html">
+            
+                <a href="../css/flex布局.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    flex布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../css/实现元素的水平垂直居中.html">
+            
+                <a href="../css/实现元素的水平垂直居中.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    实现元素的水平垂直居中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../css/小谈css3的动画.html">
+            
+                <a href="../css/小谈css3的动画.html">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    小谈css3的动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="call、apply的模拟实现.html">
+            
+                <a href="call、apply的模拟实现.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    call、apply的模拟实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="new操作符.html">
+            
+                <a href="new操作符.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    new操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="关于this那些事.html">
+            
+                <a href="关于this那些事.html">
+            
+                    
+                        <b>1.3.3.</b>
+                    
+                    关于this那些事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="关于继承的一点理解.html">
+            
+                <a href="关于继承的一点理解.html">
+            
+                    
+                        <b>1.3.4.</b>
+                    
+                    关于继承的一点理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="原型.html">
+            
+                <a href="原型.html">
+            
+                    
+                        <b>1.3.5.</b>
+                    
+                    原型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="如何实现bind.html">
+            
+                <a href="如何实现bind.html">
+            
+                    
+                        <b>1.3.6.</b>
+                    
+                    如何实现bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="实现对象的深拷贝.html">
+            
+                <a href="实现对象的深拷贝.html">
+            
+                    
+                        <b>1.3.7.</b>
+                    
+                    实现对象的深拷贝
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="数组那点事.html">
+            
+                <a href="数组那点事.html">
+            
+                    
+                        <b>1.3.8.</b>
+                    
+                    数组那点事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" >
+            
+                <span>
+            
+                    
+                        <b>1.3.9.</b>
+                    
+                    闭包
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.9.1" data-path="闭包-1.html">
+            
+                <a href="闭包-1.html">
+            
+                    
+                        <b>1.3.9.1.</b>
+                    
+                    闭包-1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.9.2" data-path="闭包-2.html">
+            
+                <a href="闭包-2.html">
+            
+                    
+                        <b>1.3.9.2.</b>
+                    
+                    闭包-2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.3" data-path="闭包-3.html">
+            
+                <a href="闭包-3.html">
+            
+                    
+                        <b>1.3.9.3.</b>
+                    
+                    闭包-3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.4" data-path="闭包-4.html">
+            
+                <a href="闭包-4.html">
+            
+                    
+                        <b>1.3.9.4.</b>
+                    
+                    闭包-4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.5" data-path="闭包-5.html">
+            
+                <a href="闭包-5.html">
+            
+                    
+                        <b>1.3.9.5.</b>
+                    
+                    闭包-5
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../AngularJS面面观/">
+            
+                <a href="../AngularJS面面观/">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    AngularJS面面观
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../AngularJS面面观/001.html">
+            
+                <a href="../AngularJS面面观/001.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    01-scope中的Dirty Checking(脏数据检查)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../AngularJS面面观/002.html">
+            
+                <a href="../AngularJS面面观/002.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    02-scope中的Dirty Checking(脏数据检查)--Digest Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../AngularJS面面观/003.html">
+            
+                <a href="../AngularJS面面观/003.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../AngularJS面面观/004.html">
+            
+                <a href="../AngularJS面面观/004.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    04-scope中的$apply方法 - Digest Cycle的触发者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../前端知识/">
+            
+                <a href="../前端知识/">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    前端知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../前端知识/jsonp.html">
+            
+                <a href="../前端知识/jsonp.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../前端知识/从输入URL到页面展示发生了什么.html">
+            
+                <a href="../前端知识/从输入URL到页面展示发生了什么.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    从输入URL到页面展示发生了什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../前端知识/浏览器缓存.html">
+            
+                <a href="../前端知识/浏览器缓存.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    浏览器缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../前端知识/跨域.html">
+            
+                <a href="../前端知识/跨域.html">
+            
+                    
+                        <b>1.5.4.</b>
+                    
+                    跨域
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >闭包-2</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;">&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</h1>
+<p>&#x5148;&#x6765;&#x770B;&#x51E0;&#x6BB5;&#x4EE3;&#x7801;</p>
+<pre><code>console.log(a); // Uncaught ReferenceError: a is not defined
+</code></pre><pre><code>var a;
+console.log(a);// undefined
+</code></pre><pre><code>var a = 10;
+console.log(a);// 10
+</code></pre><pre><code>console.log(a);// undefined
+var a = 10;
+</code></pre><ul>
+<li>&#x7B2C;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x5F88;&#x6B63;&#x5E38;&#x3002;&#x56E0;&#x4E3A;a&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x6BB5;&#xFF0C;&#x5F88;&#x6B63;&#x5E38;&#x3002;&#x56E0;&#x4E3A;a&#x5B9A;&#x4E49;&#x4E86;&#xFF0C;&#x5374;&#x6CA1;&#x6709;&#x8D4B;&#x503C;&#x3002;</li>
+<li>&#x7B2C;&#x4E09;&#x6BB5;&#xFF0C;&#x518D;&#x6B63;&#x5E38;&#x4E0D;&#x8FC7;&#x4E86;&#x3002;&#x4E0D;&#x89E3;&#x91CA;</li>
+<li>&#x7B2C;&#x56DB;&#x6BB5;&#xFF0C;&#x7565;&#x4E0D;&#x6B63;&#x5E38;&#x3002;&#x56E0;&#x4E3A;&#x5728;<code>console.log</code>&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x5B9A;&#x4E49;&#x4E86;<code>a</code>&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x5C45;&#x7136;&#x6CA1;&#x6709;&#x62A5;&#x9519;&#x3002;</li>
+</ul>
+<hr>
+<p>&#x5BF9;&#x4E8E;&#x4EE5;&#x4E0A;&#x56DB;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x53EA;&#x6709;&#x7A0D;&#x6709;&#x4E00;&#x4E9B;&#x7ECF;&#x9A8C;&#x7684;&#x524D;&#x7AEF;&#xFF0C;&#x5C31;&#x80FD;&#x5F88;&#x6E05;&#x695A;&#x7684;&#x56DE;&#x7B54;&#x4E0A;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x6709;&#x4E00;&#x4E2A;&#x4E13;&#x6709;&#x540D;&#x8BCD;<code>&#x53D8;&#x91CF;&#x63D0;&#x5347;</code>
+<br>
+&#x6CA1;&#x9519;&#xFF0C;&#x5C31;&#x662F;&#x53D8;&#x91CF;&#x63D0;&#x5347;&#x3002;</p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x53D8;&#x91CF;&#x63D0;&#x5347;&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x53D8;&#x91CF;&#x63D0;&#x5347;&#xFF1F;</h3>
+<blockquote>
+<p>&#x662F;&#x7684;&#xFF0C;&#x6211;&#x66FE;&#x5728;&#x9762;&#x8BD5;&#x91CC;&#x906D;&#x9047;&#x8FC7;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x5F53;&#x65F6;&#x5FC3;&#x91CC;&#x4E00;&#x9635;MMP&#xFF0C;&#x6211;&#x53C8;&#x6CA1;&#x53BB;&#x770B;&#x8FC7;js&#x89E3;&#x91CA;&#x5668;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x600E;&#x4E48;&#x77E5;&#x9053;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x51FD;&#x6570;&#x5728;&#x6267;&#x884C;&#x65F6;&#x8981;&#x641E;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x63D0;&#x5347;&#x554A;~ _ ~</p>
+</blockquote>
+<p>&#x73B0;&#x5728;&#x60F3;&#x60F3;&#xFF0C;&#x4E5F;&#x8BB8;&#x9762;&#x8BD5;&#x5B98;&#x662F;&#x8BA9;&#x6211;&#x56DE;&#x7B54;&#x5728;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x524D;&#x4F1A;&#x6709;&#x54EA;&#x4E9B;&#x201C;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x201D;&#x5427;</p>
+<ol>
+<li><strong>&#x53D8;&#x91CF;&#x3001;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x58F0;&#x660E;&#xFF0C;&#x9ED8;&#x8BA4;&#x8D4B;&#x503C;&#x4E3A;<code>undefined</code></strong></li>
+<li><strong>&#x5BF9;<code>this</code>&#x8D4B;&#x503C;</strong></li>
+<li><strong>&#x51FD;&#x6570;&#x58F0;&#x660E;&#x8D4B;&#x503C;</strong></li>
+</ol>
+<p><strong>&#x8FD9;&#x79CD;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x5C31;&#x88AB;&#x79F0;&#x4E4B;&#x4E3A;<code>&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</code>&#x3002;</strong></p>
+<blockquote>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x9762;&#x8BD5;&#x5B98;&#x4E5F;&#x8BB8;&#x8003;&#x7684;&#x662F;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x95EE;&#x9898;&#x3002;&#x60ED;&#x6127;&#xFF0C;&#x5F53;&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x7B54;&#x4E0A;&#x6765;&#x3002;</p>
+</blockquote>
+<p><strong>&#x5BF9;&#x4E8E;&#x4E0A;&#x8FF0;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x6765;&#x8BF4;&#xFF0C;&#x8BF4;&#x7684;&#x662F;&#x5168;&#x5C40;&#x4EE3;&#x7801;&#x3002;&#x5982;&#x679C;&#x662F;&#x51FD;&#x6570;&#x4F53;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x4E4B;&#x524D;&#xFF0C;&#x8FD8;&#x6709;&#x4EE5;&#x4E0B;&#x201C;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x201D;</strong></p>
+<ol>
+<li><strong><code>arguments</code>&#x8D4B;&#x503C;</strong></li>
+<li><strong>&#x53C2;&#x6570;&#x8D4B;&#x503C;</strong></li>
+<li><strong>&#x786E;&#x5B9A;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x90E8;&#x81EA;&#x7531;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;(&#x540E;&#x9762;&#x4F1A;&#x5199;)</strong></li>
+</ol>
+<p><strong>&#x51FD;&#x6570;&#x6BCF;&#x88AB;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x90FD;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;</strong></p>
+<hr>
+<h3 id="&#x603B;&#x7ED3;&#x4E00;&#x4E0B;">&#x603B;&#x7ED3;&#x4E00;&#x4E0B;</h3>
+<h4 id="&#x5168;&#x5C40;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x6570;&#x636E;">&#x5168;&#x5C40;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x6570;&#x636E;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x666E;&#x901A;&#x53D8;&#x91CF;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;</td>
+<td>&#x8D4B;&#x503C;&#x4E3A;undefined</td>
+</tr>
+<tr>
+<td>&#x51FD;&#x6570;&#x58F0;&#x660E;</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+<tr>
+<td>this</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x51FD;&#x6570;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x6570;&#x636E;">&#x51FD;&#x6570;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x6570;&#x636E;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x503C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x666E;&#x901A;&#x53D8;&#x91CF;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#x8868;&#x8FBE;&#x5F0F;</td>
+<td>&#x8D4B;&#x503C;&#x4E3A;undefined</td>
+</tr>
+<tr>
+<td>&#x51FD;&#x6570;&#x58F0;&#x660E;</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+<tr>
+<td>this</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+<tr>
+<td>&#x53C2;&#x6570;</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+<tr>
+<td>&#x81EA;&#x7531;&#x53D8;&#x91CF;&#x7684;&#x53D6;&#x503C;&#x4F5C;&#x7528;&#x57DF;</td>
+<td>&#x76F4;&#x63A5;&#x8D4B;&#x503C;</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x4E00;&#x4E9B;&#x7ED3;&#x8BBA;">&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x7684;&#x4E00;&#x4E9B;&#x7ED3;&#x8BBA;</h4>
+<ol>
+<li><strong>&#x6267;&#x884C;&#x5168;&#x5C40;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x3002;</strong></li>
+<li><strong>&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x90FD;&#x53C8;&#x4F1A;&#x4EA7;&#x751F;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x3002;</strong></li>
+<li><strong>&#x5F53;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x4EE5;&#x53CA;&#x5176;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x88AB;&#x6D88;&#x9664;&#x3002;</strong></li>
+<li><strong>&#x5904;&#x4E8E;&#x6D3B;&#x52A8;&#x72B6;&#x6001;&#x7684;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x53EA;&#x6709;&#x4E00;&#x4E2A;</strong></li>
+</ol>
+<hr>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x6240;&#x7406;&#x89E3;&#x7684;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x73AF;&#x5883;&#x5C31;&#x662F;&#xFF1A;</p>
+<p><strong>&#x5728;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684;&#x53D8;&#x91CF;&#x90FD;&#x4E8B;&#x5148;&#x62FF;&#x51FA;&#x6765;&#xFF0C;&#x6709;&#x7684;&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#x4E86;(&#x5982;&#x51FD;&#x6570;&#x58F0;&#x660E;&#xFF0C;<code>this</code>)&#xFF0C;&#x6709;&#x7684;&#x5148;&#x7528;<code>undefined</code>&#x5360;&#x4E2A;&#x4F4D;&#x7F6E;&#x3002;</strong></p>
+<p><strong>&#x540C;&#x65F6;&#xFF0C;&#x968F;&#x7740;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x4E5F;&#x4F1A;&#x6839;&#x636E;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#x7684;&#x503C;</strong></p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="闭包-1.html" class="navigation navigation-prev " aria-label="Previous page: 闭包-1">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="闭包-3.html" class="navigation navigation-next " aria-label="Next page: 闭包-3">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"闭包-2","level":"1.3.9.2","depth":3,"next":{"title":"闭包-3","level":"1.3.9.3","depth":3,"path":"js/闭包-3.md","ref":"js/闭包-3.md","articles":[]},"previous":{"title":"闭包-1","level":"1.3.9.1","depth":3,"path":"js/闭包-1.md","ref":"js/闭包-1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","autotheme","expandable-chapters","github","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/JoeyBling"},"livereload":{},"splitter":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"family":"serif","size":2},"highlight":{},"autotheme":{"night":[20,21,22,23,0,1,2,3,4,5],"sepia":[6,7,8,18,19,19],"white":[9,10,11,12,13,14,15,16,17]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{}},"theme":"default","author":"朱灌楠","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"朱灌楠","language":"zh-hans","gitbook":"*","description":"朱灌楠"},"file":{"path":"js/闭包-2.md","mtime":"2020-03-30T03:20:12.836Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-01T03:59:46.430Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-autotheme/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

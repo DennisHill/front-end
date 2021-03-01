@@ -1,0 +1,881 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>02-scope中的Dirty Checking(脏数据检查)--Digest Cycle · 朱灌楠</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="朱灌楠">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="003.html" />
+    
+    
+    <link rel="prev" href="001.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../css/">
+            
+                <a href="../css/">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    css
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../css/css的权重.html">
+            
+                <a href="../css/css的权重.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    css的权重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../css/flex布局.html">
+            
+                <a href="../css/flex布局.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    flex布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../css/实现元素的水平垂直居中.html">
+            
+                <a href="../css/实现元素的水平垂直居中.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    实现元素的水平垂直居中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../css/小谈css3的动画.html">
+            
+                <a href="../css/小谈css3的动画.html">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    小谈css3的动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../js/">
+            
+                <a href="../js/">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../js/call、apply的模拟实现.html">
+            
+                <a href="../js/call、apply的模拟实现.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    call、apply的模拟实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../js/new操作符.html">
+            
+                <a href="../js/new操作符.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    new操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../js/关于this那些事.html">
+            
+                <a href="../js/关于this那些事.html">
+            
+                    
+                        <b>1.3.3.</b>
+                    
+                    关于this那些事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../js/关于继承的一点理解.html">
+            
+                <a href="../js/关于继承的一点理解.html">
+            
+                    
+                        <b>1.3.4.</b>
+                    
+                    关于继承的一点理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../js/原型.html">
+            
+                <a href="../js/原型.html">
+            
+                    
+                        <b>1.3.5.</b>
+                    
+                    原型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../js/如何实现bind.html">
+            
+                <a href="../js/如何实现bind.html">
+            
+                    
+                        <b>1.3.6.</b>
+                    
+                    如何实现bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../js/实现对象的深拷贝.html">
+            
+                <a href="../js/实现对象的深拷贝.html">
+            
+                    
+                        <b>1.3.7.</b>
+                    
+                    实现对象的深拷贝
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../js/数组那点事.html">
+            
+                <a href="../js/数组那点事.html">
+            
+                    
+                        <b>1.3.8.</b>
+                    
+                    数组那点事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" >
+            
+                <span>
+            
+                    
+                        <b>1.3.9.</b>
+                    
+                    闭包
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.9.1" data-path="../js/闭包-1.html">
+            
+                <a href="../js/闭包-1.html">
+            
+                    
+                        <b>1.3.9.1.</b>
+                    
+                    闭包-1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.2" data-path="../js/闭包-2.html">
+            
+                <a href="../js/闭包-2.html">
+            
+                    
+                        <b>1.3.9.2.</b>
+                    
+                    闭包-2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.3" data-path="../js/闭包-3.html">
+            
+                <a href="../js/闭包-3.html">
+            
+                    
+                        <b>1.3.9.3.</b>
+                    
+                    闭包-3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.4" data-path="../js/闭包-4.html">
+            
+                <a href="../js/闭包-4.html">
+            
+                    
+                        <b>1.3.9.4.</b>
+                    
+                    闭包-4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.5" data-path="../js/闭包-5.html">
+            
+                <a href="../js/闭包-5.html">
+            
+                    
+                        <b>1.3.9.5.</b>
+                    
+                    闭包-5
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    AngularJS面面观
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="001.html">
+            
+                <a href="001.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    01-scope中的Dirty Checking(脏数据检查)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="002.html">
+            
+                <a href="002.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    02-scope中的Dirty Checking(脏数据检查)--Digest Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="003.html">
+            
+                <a href="003.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="004.html">
+            
+                <a href="004.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    04-scope中的$apply方法 - Digest Cycle的触发者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../前端知识/">
+            
+                <a href="../前端知识/">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    前端知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../前端知识/jsonp.html">
+            
+                <a href="../前端知识/jsonp.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../前端知识/从输入URL到页面展示发生了什么.html">
+            
+                <a href="../前端知识/从输入URL到页面展示发生了什么.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    从输入URL到页面展示发生了什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../前端知识/浏览器缓存.html">
+            
+                <a href="../前端知识/浏览器缓存.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    浏览器缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../前端知识/跨域.html">
+            
+                <a href="../前端知识/跨域.html">
+            
+                    
+                        <b>1.5.4.</b>
+                    
+                    跨域
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >02-scope中的Dirty Checking(脏数据检查)--Digest Cycle</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x672C;&#x6587;&#x4E3A;CSDN&#x535A;&#x4E3B;&#x300C;dm_vincent&#x300D;&#x7684;&#x539F;&#x521B;&#x6587;&#x7AE0;.<a href="https://blog.csdn.net/dm_vincent/article/details/51407292" target="_blank">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></p>
+</blockquote>
+<h1 id="dirty-checking&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;">Dirty Checking&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</h1>
+<p>&#x4E86;&#x89E3;<code>Angular</code>&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x53EB;&#x505A;&#x810F;&#x6570;&#x636E;&#x68C0;&#x67E5;<code>(Dirty Checking)</code>&#x7684;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x4E86;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x8FD9;&#x4E00;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4E2D;&#x7684;&#x9ED1;&#x79D1;&#x6280;&#x3002;&#x90A3;&#x4E48;&#x5728;Angular&#x4E2D;&#x5230;&#x5E95;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5B83;&#x7684;&#x5462;&#xFF1F;&#x672C;&#x6587;&#x5C31;&#x4E00;&#x4E00;&#x6765;&#x63ED;&#x5F00;&#x5B83;&#x7684;&#x795E;&#x79D8;&#x9762;&#x7EB1;&#x3002;</p>
+<p>&#x4E00;&#x8A00;&#x4EE5;&#x853D;&#x4E4B;&#xFF0C;&#x5728;<code>angular</code>&#x4E2D;&#x662F;&#x901A;&#x8FC7;<code>Digest Cycle</code>&#x6765;&#x5B8C;&#x6210;&#x810F;&#x6570;&#x636E;&#x68C0;&#x67E5;&#x4ECE;&#x800C;&#x5B8C;&#x6210;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x8FDB;&#x800C;&#x5B9E;&#x73B0;<code>scope</code>&#x548C;<code>view</code>&#x7684;&#x540C;&#x6B65;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x5206;&#x51E0;&#x4E2A;&#x65B9;&#x9762;&#x6765;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;<code>Digest Cycle(DC)</code></p>
+<h2 id="dc&#x4E2D;&#x7684;&#x68C0;&#x67E5;&#x5355;&#x5143;-watcher">DC&#x4E2D;&#x7684;&#x68C0;&#x67E5;&#x5355;&#x5143;-Watcher</h2>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x5DF2;&#x7ECF;&#x8BF4;&#x660E;&#x4E86;&#x5728;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x8868;&#x8FBE;&#x5F0F;<code>{{ }}</code>&#x7684;&#x80CC;&#x540E;&#xFF0C;&#x662F;<code>watcher</code>&#x5728;&#x8D77;&#x4F5C;&#x7528;&#x3002;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;<code>watcher</code>&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x5B83;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#xFF1F;</p>
+<p>&#x76F4;&#x63A5;&#x4E0A;&#x4EE3;&#x7801;&#xFF0C;&#x6458;&#x81EA;<code>v1.5.5</code>&#x7684;<code>rootScope.js</code></p>
+<pre><code>$watch: function(watchExp, listener, objectEquality, prettyPrintExpression) {
+  var get = $parse(watchExp);
+  if (get.$$watchDelegate) {
+    return get.$$watchDelegate(this, listener, objectEquality, get, watchExp);
+  }
+  var scope = this,
+      array = scope.$$watchers,
+      watcher = {
+        fn: listener,
+        last: initWatchVal,
+        get: get,
+        exp: prettyPrintExpression || watchExp,
+        eq: !!objectEquality
+      };
+
+  lastDirtyWatch = null;
+
+  if (!isFunction(listener)) {
+    watcher.fn = noop;
+  }
+
+  if (!array) {
+    array = scope.$$watchers = [];
+  }
+  // we use unshift since we use a while loop in $digest for speed.
+  // the while loop reads in reverse order.
+  array.unshift(watcher);
+  incrementWatchersCount(this, 1);
+
+  return function deregisterWatch() {
+    if (arrayRemove(array, watcher) &gt;= 0) {
+      incrementWatchersCount(scope, -1);
+    }
+    lastDirtyWatch = null;
+  };
+}
+</code></pre><blockquote>
+<p><code>angular</code>&#x6587;&#x6863;&#x4E2D;&#x5BF9;&#x4E8E;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x63CF;&#x8FF0;&#x662F;&#xFF1A;Registers a listener callback to be executed whenever the watchExpression changes. &#x5373;&#x5F53;<code>watchExp</code>&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x8C03;&#x7528;<code>listener</code>&#x4EE3;&#x8868;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+</blockquote>
+<p>&#x524D;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#x4F20;&#x5165;&#x7684;<code>watch</code>&#x8868;&#x8FBE;&#x5F0F;&#x4F1A;&#x88AB;&#x7FFB;&#x8BD1;&#x6210;&#x4E00;&#x4E2A;<code>watch</code>&#x51FD;&#x6570;&#x3002;&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4E5F;&#x5F88;&#x6E05;&#x6670;&#x7684;&#x53D1;&#x73B0;&#x4E86;&#x8FD9;&#x4E00;&#x70B9;&#xFF1A;</p>
+<pre><code>var get = $parse(watchExp);
+</code></pre><p><code>angular</code>&#x8C03;&#x7528;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x670D;&#x52A1;<code>$parse</code>&#x5B8C;&#x6210;&#x4E86;&#x4ECE;&#x8868;&#x8FBE;&#x5F0F;&#x5230;&#x51FD;&#x6570;&#x7684;&#x8F6C;&#x6362;&#x3002;&#x81F3;&#x4E8E;<code>$parse</code>&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x76EE;&#x524D;&#x6211;&#x4E5F;&#x8FD8;&#x6CA1;&#x4ED4;&#x7EC6;&#x7814;&#x7A76;&#xFF0C;&#x4EE5;&#x540E;&#x6709;&#x673A;&#x4F1A;&#x518D;&#x4E13;&#x95E8;&#x5199;&#x6587;&#x7AE0;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>&#x7136;&#x540E;&#xFF0C;&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>if (get.$$watchDelegate) {
+  return get.$$watchDelegate(this, listener, objectEquality, get, watchExp);
+}
+</code></pre><p>&#x5F53;&#x7F16;&#x8BD1;&#x5F97;&#x5230;&#x7684;<code>watch function</code>&#x4E2D;&#x5B58;&#x5728;<code>$$watchDelegate</code>&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x63AA;&#x65BD;&#xFF0C;&#x5728;&#x540E;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x4E2D;&#x4F1A;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x540E;&#x9762;&#x4F1A;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code>array = scope.$$watchers;
+......
+if (!array) {
+  array = scope.$$watchers = [];
+}
+</code></pre><p>&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x5F53;&#x524D;<code>scope</code>&#x4E2D;&#x7684;&#x6240;&#x6709;<code>watchers</code>&#x3002;&#x987A;&#x4FBF;&#x8BF4;&#x4E00;&#x53E5;&#xFF0C;<code>angular</code>&#x4E2D;&#x6240;&#x6709;&#x4EE5;&#x4E24;&#x4E2A;<code>$</code>&#x7B26;&#x53F7;&#x5F00;&#x5934;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x90FD;&#x662F;&#x4F5C;&#x4E3A;&#x5185;&#x90E8;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x5185;&#x90E8;&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x822C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x903B;&#x8F91;&#x4E2D;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x5C31;&#x662F;&#x540E;&#x9762;&#x6267;&#x884C;<code>$digest</code>&#x65F6;&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5728;&#x521B;&#x5EFA;<code>watcher</code>&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x5B83;&#x6709;5&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code>watcher = {
+  fn: listener,
+  last: initWatchVal,
+  get: get,
+  exp: prettyPrintExpression || watchExp,
+  eq: !!objectEquality
+};
+</code></pre><p><code>fn</code>&#x5C31;&#x662F;&#x4F20;&#x5165;&#x7684;<code>listener</code>&#xFF0C;&#x5173;&#x4E8E;<code>listener</code>&#xFF0C;&#x5B83;&#x7684;&#x5F62;&#x5F0F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;<code>function(newVal, oldVal, scope)</code>
+&#x987E;&#x540D;&#x601D;&#x4E49;&#x5728;&#x8C03;&#x7528;&#x5B83;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x6700;&#x65B0;&#x503C;&#xFF0C;&#x524D;&#x503C;&#x4EE5;&#x53CA;&#x5F53;&#x524D;<code>scope</code>&#x4F20;&#x5165;&#x3002;</p>
+<p>&#x4F46;&#x662F;<code>listener</code>&#x4E5F;&#x5E76;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF1A;</p>
+<pre><code>if (!isFunction(listener)) {
+  watcher.fn = noop;
+}
+</code></pre><p>&#x65E2;&#x7136;<code>watcher</code>&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x5BF9;<code>scope</code>&#x4E0A;&#x7684;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x76D1;&#x63A7;&#xFF0C;&#x4E0D;&#x8BBE;&#x7F6E;<code>listener</code>&#x6709;&#x4EC0;&#x4E48;&#x610F;&#x4E49;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#xFF0C;&#x6211;&#x4E5F;&#x4E0D;&#x662F;&#x5F88;&#x6E05;&#x695A;&#x5B83;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#x6709;&#x54EA;&#x4E9B;&#x3002;&#x4F46;&#x662F;&#x4ECE;&#x903B;&#x8F91;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x6BD5;&#x7ADF;&#x6BCF;&#x6B21;<code>DC</code>&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#x5230;<code>watchExp</code>&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;<code>listener</code>&#x7684;<code>watcher</code>&#xFF0C;&#x6216;&#x591A;&#x6216;&#x5C11;&#x53EF;&#x4EE5;&#x8D77;&#x5230;&#x901A;&#x77E5;&#x7684;&#x6548;&#x679C;&#x5427;&#x3002;&#x6BD4;&#x5982;&#x5728;<code>watchExp</code>&#x8FDB;&#x884C;<code>digest</code>&#x6B21;&#x6570;&#x7684;&#x7EDF;&#x8BA1;) &#x6709;&#x70B9;&#x7275;&#x5F3A;&#xFF0C;&#x6709;&#x7ECF;&#x9A8C;&#x7684;&#x540C;&#x5B66;&#x8BF7;&#x8D50;&#x6559;&#x2026;&#x2026;</p>
+<p>&#x81F3;&#x4E8E;<code>exp</code>&#x548C;<code>eq</code>&#xFF0C;&#x5728;&#x540E;&#x9762;&#x9605;&#x8BFB;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x81EA;&#x7136;&#x5C31;&#x4F1A;&#x518D;&#x6B21;&#x78B0;&#x5230;&#xFF0C;&#x6709;&#x4E86;&#x66F4;&#x591A;&#x4E0A;&#x4E0B;&#x6587;&#x80CC;&#x666F;&#x77E5;&#x8BC6;&#xFF0C;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x65B0;&#x7684;&#x6982;&#x5FF5;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x76F8;&#x5BF9;&#x5BB9;&#x6613;&#x4E00;&#x4E9B;&#x3002;&#x73B0;&#x5728;&#x6682;&#x65F6;&#x6027;&#x7684;&#x5148;&#x5FFD;&#x7565;&#x6389;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x5728;&#x9605;&#x8BFB;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9047;&#x5230;&#x770B;&#x4E0D;&#x660E;&#x767D;&#x7684;&#x5730;&#x65B9;&#x662F;&#x975E;&#x5E38;&#x975E;&#x5E38;&#x975E;&#x5E38;&#x6B63;&#x5E38;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6B64;&#x65F6;&#x4E0D;&#x8981;&#x611F;&#x89C9;&#x5230;&#x6C14;&#x9981;&#xFF0C;&#x4E5F;&#x4E0D;&#x8981;&#x8FC7;&#x4E8E;&#x8F83;&#x52B2;&#x975E;&#x8981;&#x628A;&#x5B83;&#x5F04;&#x660E;&#x767D;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x662F;&#x5728;&#x505A;&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#xFF0C;&#x63A2;&#x7D22;&#x7684;&#x5C42;&#x6B21;&#x592A;&#x6DF1;&#x4E86;&#xFF0C;&#x6050;&#x6015;&#x4F60;&#x5C31;&#x4E0D;&#x77E5;&#x9053;&#x4F60;&#x5728;&#x54EA;&#x91CC;&#x4E86;&#xFF01;&#x6700;&#x540E;&#x7684;&#x7ED3;&#x5C40;&#x5F80;&#x5F80;&#x5C31;&#x662F;&#x653E;&#x5F03;&#xFF0C;&#x6211;&#x60F3;&#x5F88;&#x591A;&#x5C1D;&#x8BD5;&#x8FC7;&#x9605;&#x8BFB;&#x4EE3;&#x7801;&#x7684;&#x540C;&#x5B66;&#x4EEC;&#x90FD;&#x6709;&#x8FC7;&#x8FD9;&#x79CD;&#x4F53;&#x9A8C;&#x5427;&#x3002;&#x800C;&#x9605;&#x8BFB;&#x4EE3;&#x7801;&#x66F4;&#x50CF;&#x662F;&#x5728;&#x8FDB;&#x884C;&#x5E7F;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x9996;&#x5148;&#x5F04;&#x660E;&#x767D;&#x4EE3;&#x7801;&#x7684;&#x6574;&#x4F53;&#x7ED3;&#x6784;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x9700;&#x8981;&#x9010;&#x5C42;&#x63A8;&#x8FDB;&#xFF0C;&#x5404;&#x4E2A;&#x51FB;&#x7834;&#xFF0C;&#x6700;&#x7EC8;&#x9886;&#x609F;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>return function deregisterWatch() {
+  if (arrayRemove(array, watcher) &gt;= 0) {
+    incrementWatchersCount(scope, -1);
+  }
+  lastDirtyWatch = null;
+};
+</code></pre><p>&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x7528;&#x6765;&#x6CE8;&#x9500;&#x5F53;&#x524D;<code>watcher</code>&#xFF1A;&#x5C06;&#x5F53;&#x524D;<code>watcher</code>&#x4ECE;&#x6570;&#x7EC4;&#x4E2D;&#x5220;&#x9664;&#x5E76;&#x51CF;&#x5C11;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x503C;&#x3002;
+&#x4EE5;&#x4E0A;&#x5C31;&#x662F;DC&#x4E2D;&#x7684;&#x68C0;&#x67E5;&#x5355;&#x5143;&#xFF1A;<code>watcher</code>&#x3002;&#x5C06;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x590D;&#x6742;&#x6027;&#x5256;&#x79BB;&#x540E;&#xFF0C;&#x80CC;&#x540E;&#x7684;&#x903B;&#x8F91;&#x4E5F;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x795E;&#x79D8;&#x3002;</p>
+<h2 id="dc&#x4E2D;&#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x53D8;&#x5316;&#x7684;&#x51E0;&#x79CD;&#x903B;&#x8F91;">DC&#x4E2D;&#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x53D8;&#x5316;&#x7684;&#x51E0;&#x79CD;&#x903B;&#x8F91;</h2>
+<p>&#x58F0;&#x660E;&#x597D;&#x4E86;<code>watcher</code>&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x4E00;&#x8F6E;<code>DC</code>&#x4E2D;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x4F1A;&#x5C06;&#x6CE8;&#x518C;&#x8FC7;&#x7684;<code>watcher</code>&#x4E2D;&#x7684;<code>listener</code>&#x7EDF;&#x7EDF;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x5462;&#xFF1F;
+&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x7B54;&#x6848;&#x662F;&#x5426;&#x5B9A;&#x7684;&#x3002;&#x5982;&#x679C;&#x771F;&#x8981;&#x8FD9;&#x4E48;&#x8BBE;&#x8BA1;&#xFF0C;&#x4EFB;&#x4F55;&#x7A0B;&#x5E8F;&#x5458;&#x90FD;&#x4F1A;&#x6447;&#x6447;&#x5934;&#xFF1A;&#x6027;&#x80FD;&#x4F1A;&#x6709;&#x591A;&#x5DEE;&#x554A;&#xFF01;
+&#x786E;&#x5B9E;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x5C06;&#x6240;&#x6709;<code>watcher</code>&#x4E2D;&#x7684;<code>listener</code>&#x5168;&#x90E8;&#x90FD;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&#x662F;&#x5426;&#x8C03;&#x7528;&#x7684;&#x5173;&#x952E;&#x5C31;&#x5728;&#x4E8E;<code>$watch</code>&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;<code>watchExp</code>&#x3002;</p>
+<p>&#x53EA;&#x6709;&#x5728;&#x5F53;&#x524D;&#x7684;&#x503C;&#x548C;&#x4E0A;&#x6B21;&#x68C0;&#x6D4B;&#x7684;&#x503C;&#x4E0D;&#x540C;&#x65F6;&#xFF0C;&#x624D;&#x9700;&#x8981;&#x8C03;&#x7528;<code>listener</code>&#x3002;&#x57FA;&#x4E8E;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5199;&#x4E0B;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x610F;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>forEach($$watchers, function(watcher) {
+  newVal = watcher.get(scope);
+  oldVal = watcher.last;
+  if (newVal !== oldVal) {
+    watcher.last = newValue;
+    watcher.listenerFn(newVal, oldVal, scope);
+  }
+});
+</code></pre><p>&#x9996;&#x5148;&#x5BF9;<code>watchExp</code>&#x6C42;&#x503C;&#x5F97;&#x5230;&#x5F53;&#x524D;&#x503C;<code>newVal</code>&#x3002;
+&#x7136;&#x540E;&#x5C06;&#x8BE5;&#x503C;&#x548C;&#x524D;&#x503C;<code>oldVal</code>&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x76F8;&#x7B49;&#xFF1A;</p>
+<ol>
+<li>&#x5C06;last&#x8BBE;&#x4E3A;&#x5F53;&#x524D;&#x503C;</li>
+<li>&#x8C03;&#x7528;listener</li>
+</ol>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x903B;&#x8F91;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x53D1;&#x73B0;&#x51E0;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ol>
+<li>&#x5728;&#x4E00;&#x8F6E;<code>DC</code>&#x4E2D;&#xFF0C;&#x5C3D;&#x7BA1;&#x6BCF;&#x4E2A;<code>watcher</code>&#x4E0A;&#x7684;<code>listener</code>&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x6BCF;&#x4E2A;<code>watcher</code>&#x4E0A;&#x7684;<code>watchExp</code>&#x662F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x6700;&#x4E3A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x5BF9;&#x4E8E;&#x5B83;&#x7684;&#x6027;&#x80FD;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x505A;&#x5230;&#x5FC3;&#x4E2D;&#x6709;&#x6570;&#xFF0C;&#x5373;&#x5728;<code>watchExp</code>&#x4E2D;&#x4E0D;&#x5B9C;&#x8FDB;&#x884C;&#x8FC7;&#x4E8E;&#x590D;&#x6742;&#x7684;&#x5224;&#x65AD;&#x548C;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x5728;&#x6BD4;&#x8F83;&#x5F53;&#x524D;&#x503C;<code>newVal</code>&#x548C;&#x524D;&#x503C;<code>oldVal</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x662F;<code>!==</code>&#x6765;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&#x4F46;&#x662F;&#x8003;&#x8651;&#x4E0B;&#x9762;&#x7684;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x53C8;&#x89C9;&#x5F97;&#x6709;&#x4E9B;&#x4E0D;&#x5BF9;&#xFF1A;</li>
+</ol>
+<pre><code>[1, 2, 3] !== [1, 2, 3] // true
+</code></pre><p>&#x5373;&#x4F7F;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x5224;&#x65AD;&#x4ECD;&#x7136;&#x662F;&#xFF1A;&#x4ED6;&#x4FE9;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x9700;&#x8981;&#x8C03;&#x7528;<code>listener</code></p>
+<p>&#x597D;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x514B;&#x670D;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5462;&#xFF1F;&#x5373;&#x5F53;&#x5143;&#x7D20;&#x5185;&#x5BB9;&#x4E00;&#x6837;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x8C03;&#x7528;<code>listener</code>&#x3002;&#x8FD9;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x4E86;<code>DC</code>&#x4E2D;&#x5224;&#x65AD;&#x6570;&#x636E;&#x662F;&#x5426;&#x53D8;&#x201C;&#x810F;&#x201D;&#x7684;&#x51E0;&#x79CD;&#x903B;&#x8F91;&#xFF1A;</p>
+<ul>
+<li>&#x57FA;&#x4E8E;&#x503C;&#x7684;&#x68C0;&#x67E5;</li>
+<li>&#x57FA;&#x4E8E;&#x5F15;&#x7528;&#x7684;&#x68C0;&#x67E5;</li>
+<li>&#x57FA;&#x4E8E;&#x96C6;&#x5408;&#x7684;&#x68C0;&#x67E5;</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x7B2C;&#x4E00;&#x79CD;&#xFF0C;&#x57FA;&#x4E8E;&#x503C;&#x7684;&#x68C0;&#x67E5;&#x3002;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x9762;&#x5BF9;&#x76F8;&#x540C;&#x6570;&#x7EC4;&#x65F6;&#x9700;&#x8981;&#x7684;&#x903B;&#x8F91;&#x3002;&#x5982;&#x679C;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x5224;&#x65AD;&#x5B83;&#x4EEC;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;&#x6B64;&#x65F6;<code>$watch</code>&#x65B9;&#x6CD5;&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;<code>eq</code>&#x5C31;&#x6D3E;&#x4E0A;&#x7528;&#x573A;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x6587;&#x6863;&#x4E2D;&#x5BF9;&#x5B83;&#x7684;&#x89E3;&#x91CA;&#xFF1A;</p>
+<blockquote>
+<p>@param {boolean=} [objectEquality=false] Compare for object equality using {@link angular.equals} instead of comparing for reference equality.</p>
+</blockquote>
+<p>&#x9ED8;&#x8BA4;&#x4E3A;<code>false</code>&#x3002;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x5F15;&#x7528;&#x7684;&#x5224;&#x65AD;&#x65B9;&#x5F0F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x4F7F;&#x7528;&#x7684;<code>!==</code>&#x3002;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;<code>true</code>&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x4F7F;&#x7528;<code>angular.equals</code>&#x65B9;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&#x81F3;&#x4E8E;<code>angular.equals</code>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x5728;<code>Angular.js</code>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5176;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x90FD;&#x662F;&#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#x7C7B;&#x65B9;&#x6CD5;&#x3002;&#x5B83;&#x4F1A;&#x9012;&#x5F52;&#x5730;&#x5BF9;&#x5176;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x6BD4;&#x5BF9;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x5224;&#x65AD;&#x5B83;&#x4EEC;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x7B2C;&#x4E09;&#x79CD;&#x5462;&#xFF0C;&#x5B83;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x662F;<code>$watchCollection</code>&#xFF0C;&#x73B0;&#x5728;&#x4ECB;&#x7ECD;&#x5B83;&#x8FD8;&#x6709;&#x70B9;&#x592A;&#x65E9;&#x4E86;&#xFF0C;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x5BF9;&#x6570;&#x7EC4;&#x548C;&#x5BF9;&#x8C61;&#x7684;&#x6BD4;&#x8F83;&#x8FC7;&#x7A0B;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#x3002;&#x5728;&#x540E;&#x7EED;&#x7684;&#x6587;&#x7AE0;&#x4E2D;&#x4F1A;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+<h2 id="dc&#x7684;&#x6267;&#x884C;&#x8005;digest">DC&#x7684;&#x6267;&#x884C;&#x8005;$digest</h2>
+<p>&#x5728;&#x4E0A;&#x9762;&#x6267;&#x884C;<code>DC</code>&#x7684;&#x4F2A;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x8C03;&#x7528;<code>watchExp</code>&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x503C;&#x548C;&#x524D;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x5BF9;&#x6765;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x9700;&#x8981;&#x8C03;&#x7528;<code>listener</code>&#x3002;&#x90A3;&#x4E48;&#x4E00;&#x4E2A;&#x5F88;&#x76F4;&#x63A5;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x662F;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x524D;&#x503C;<code>oldVal</code>&#x662F;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x7684;&#x5462;&#xFF1F;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;<code>watch</code>&#x4E86;<code>scope</code>&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x5E76;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x8FC7;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x7B2C;&#x4E00;&#x6B21;<code>DC</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;<code>watch</code>&#x4E0A;&#x7684;<code>listener</code>&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;<code>watcher</code>&#x7684;<code>last</code>&#x5C5E;&#x6027;&#xFF0C;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x5C5E;&#x6027;&#x9ED8;&#x8BA4;&#x5C31;&#x662F;<code>undefined</code>&#xFF0C;&#x800C;<code>undefined</code>&#x548C;<code>undefined</code>&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;<code>true</code>&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x7B2C;&#x4E00;&#x6B21;<code>DC</code>&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x6240;&#x6709;<code>watcher</code>&#x7684;<code>listener</code>&#x65F6;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5BF9;&#x6BCF;&#x4E2A;<code>watcher</code>&#x8BBE;&#x7F6E;<code>last</code>&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x4E5F;&#x5C31;&#x6709;&#x4E86;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x8FD9;&#x4E00;&#x6BB5;&#xFF1A;</p>
+<pre><code>watcher = {
+  fn: listener,
+  last: initWatchVal,
+  get: get,
+  exp: prettyPrintExpression || watchExp,
+  eq: !!objectEquality
+};
+</code></pre><p>&#x5C06;<code>last</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x4E86;<code>initWatchVal</code>&#x3002;
+&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x53EF;&#x4EE5;&#x77E5;&#x9053;<code>initWatchVal</code>&#x662F;&#x8FD9;&#x6837;&#x5B9A;&#x4E49;&#x7684;&#xFF1A;</p>
+<pre><code>function initWatchVal() {}
+</code></pre><p>&#x6BD4;&#x8F83;&#x5DE7;&#x5999;&#x7684;&#x5229;&#x7528;&#x4E86;<code>JavaScript</code>&#x4E2D;&#x5F15;&#x7528;&#x76F8;&#x7B49;&#x5224;&#x65AD;(<code>Reference Equality</code>)&#x89C4;&#x5219;&#x3002;&#x5373;&#x53EA;&#x6709;&#x8BE5;&#x51FD;&#x6570;&#x81EA;&#x8EAB;&#x548C;&#x81EA;&#x8EAB;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x4F1A;&#x76F8;&#x7B49;&#x3002;&#x5B83;&#x548C;&#x4EFB;&#x4F55;&#x5176;&#x5B83;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x8FD4;&#x56DE;<code>false</code>&#x3002;&#x5C06;&#x5B83;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E00;&#x4E2A;<code>watcher</code>&#x7684;<code>last</code>&#x503C;&#x518D;&#x9002;&#x5408;&#x4E0D;&#x8FC7;&#x4E86;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x5982;&#x679C;<code>listener</code>&#x4E2D;&#x5BF9;<code>scope</code>&#x4E2D;&#x7684;&#x5176;&#x5B83;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E86;&#x4FEE;&#x6539;&#xFF0C;&#x800C;&#x6070;&#x5DE7;&#x8BE5;&#x5C5E;&#x6027;&#x4E5F;&#x6709;&#x5BF9;&#x5E94;&#x7684;<code>watcher</code>&#x65F6;&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x662F;&#x597D;&#xFF1F;&#x8FD9;&#x6837;&#x5C31;&#x9020;&#x6210;&#x4E86;&#x6F5C;&#x5728;&#x7684;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x4E3E;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4E24;&#x4E2A;<code>watcher</code>:<code>A</code>&#x548C;<code>B</code>&#xFF0C;&#x5206;&#x522B;&#x9488;&#x5BF9;&#x5C5E;&#x6027;<code>a</code>&#x548C;&#x5C5E;&#x6027;<code>b</code>&#x3002;&#x9488;&#x5BF9;<code>a</code>&#x7684;<code>watcher A</code>&#x9996;&#x5148;&#x6267;&#x884C;&#xFF0C;&#x5982;&#x679C;&#x5728;<code>B</code>&#x7684;<code>listener</code>&#x4E2D;&#x6539;&#x53D8;&#x4E86;&#x5C5E;&#x6027;<code>a</code>&#xFF0C;&#x90A3;&#x4E48;&#x7531;&#x4E8E;<code>A</code>&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x8FC7;&#x4E86;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x5224;&#x65AD;&#x51FA;<code>a</code>&#x53C8;&#x53D8;&#x201C;&#x810F;&#x201D;&#x4E86;&#x7684;&#x4E8B;&#x5B9E;&#x3002;&#x8FD9;&#x53EA;&#x662F;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x6027;&#xFF0C;&#x5F53;<code>watcher</code>&#x6570;&#x91CF;&#x589E;&#x591A;&#xFF0C;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x90FD;&#x662F;&#x5B58;&#x5728;&#x7684;&#x3002;&#x56E0;&#x6B64;&#xFF0C;<code>angular</code>&#x7528;&#x6700;&#x60B2;&#x89C2;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x770B;&#x5F85;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#xFF1A;&#x53EA;&#x8981;<code>listener</code>&#x88AB;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x5C31;&#x8BA4;&#x4E3A;&#x6709;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x6709;&#x7684;&#x6570;&#x636E;&#x53C8;&#x53D8;&#x201C;&#x810F;&#x201D;&#x4E86;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x53CD;&#x590D;&#x7684;&#x6267;&#x884C;DC&#xFF0C;&#x6765;&#x786E;&#x4FDD;&#x518D;&#x6CA1;&#x6709;<code>listener</code>&#x88AB;&#x6267;&#x884C;&#x3002;&#x53EA;&#x6709;&#x5F53;&#x4E00;&#x8F6E;<code>DC</code>&#x4E2D;&#x4E00;&#x4E2A;<code>listener</code>&#x90FD;&#x6CA1;&#x6709;&#x88AB;&#x6267;&#x884C;&#x65F6;&#xFF0C;<code>DC</code>&#x624D;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x518D;&#x88AB;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;<code>DC</code>&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x8E74;&#x800C;&#x5C31;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5B83;&#x9700;&#x8981;&#x53CD;&#x590D;&#x786E;&#x8BA4;&#x6240;&#x6709;&#x7684;&#x88AB;&#x68C0;&#x67E5;&#x503C;&#x90FD;&#x201C;&#x7A33;&#x5B9A;&#x201D;&#x4E86;&#xFF0C;&#x5B83;&#x624D;&#x80FD;&#x4F11;&#x606F;&#x3002;&#x90A3;&#x4E48;&#x662F;&#x4E0D;&#x662F;&#x610F;&#x5473;&#x7740;DC&#x53EF;&#x80FD;&#x4F1A;&#x6267;&#x884C;&#x975E;&#x5E38;&#x591A;&#x6B21;&#xFF0C;&#x4E43;&#x81F3;&#x4E8E;&#x65E0;&#x9650;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#x7684;&#x60C5;&#x51B5;&#x5462;&#xFF1F;</p>
+<p>&#x7B54;&#x6848;&#x663E;&#x7136;&#x662F;&#x5426;&#x5B9A;&#x7684;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x9047;&#x5230;&#x8FC7;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#xFF1A;</p>
+<pre><code>$digest() iterations reached. Aborting!
+</code></pre><p>&#x5B83;&#x544A;&#x8BC9;&#x6211;&#x4EEC;<code>DC</code>&#x4F3C;&#x4E4E;&#x8FDB;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x65E0;&#x4F11;&#x6B62;&#x7684;&#x5FAA;&#x73AF;&#x72B6;&#x6001;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x4E3A;&#x4E86;&#x4E0D;&#x9020;&#x6210;&#x6D4F;&#x89C8;&#x5668;&#x5931;&#x53BB;&#x54CD;&#x5E94;&#xFF0C;<code>angular</code>&#x4E3B;&#x52A8;&#x653E;&#x5F03;&#x6CBB;&#x7597;&#xFF01;&#x8FD9;&#x4E2A;<code>10</code>&#x662F;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;&#x5728;<code>angular</code>&#x7684;&#x6E90;&#x7801;&#x4E2D;&#x7684;&#xFF0C;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>$rootScopeProvider</code>&#x6765;&#x4FEE;&#x6539;&#x5B83;&#xFF1A;</p>
+<pre><code>this.digestTtl = function(value) {
+  if (arguments.length) {
+    TTL = value;
+  }
+  return TTL;
+};
+</code></pre><p>&#x8FD9;&#x91CC;&#x7684;TTL(&#x53EF;&#x80FD;&#x662F;Time To Live&#x7684;&#x610F;&#x601D;)&#x5C31;&#x662F;DC&#x7684;&#x6700;&#x5927;&#x6267;&#x884C;&#x6B21;&#x6570;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x7684;&#x903B;&#x8F91;&#x53CD;&#x6620;&#x5230;&#x4F2A;&#x4EE3;&#x7801;&#x4E2D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code>var ttl = 10;
+do {
+  var dirty = false;
+  var length = $$watchers.length;
+  var watcher;
+  for(var idx = 0; idx &lt; length; idx++) {
+    watcher = $$watchers[idx];
+    newVal = watcher.watchFn(scope);
+    oldVal = watcher.last;
+    if (!newVal.equals(oldVal)) {
+      watcher.last = newVal;
+      watcher.listener(newVal, oldVal, scope);
+      dirty = true;
+    }
+  }
+  ttl -= 1;
+  if (dirty &amp;&amp; ttl === 0) {
+    throw &apos;10 $digest() iterations reached. Aborting!&apos;;
+  }
+} while (dirty);
+</code></pre><p>&#x4E0A;&#x9762;<code>DC</code>&#x7684;&#x903B;&#x8F91;&#x79BB;<code>angular</code>&#x771F;&#x6B63;&#x7684;&#x5B9E;&#x73B0;&#x8FD8;&#x5DEE;&#x7684;&#x6BD4;&#x8F83;&#x8FDC;&#x3002;&#x4F46;&#x662F;&#x6838;&#x5FC3;&#x7684;&#x903B;&#x8F91;&#x5DF2;&#x7ECF;&#x521D;&#x5177;&#x96CF;&#x5F62;&#x4E86;&#x3002;&#x5269;&#x4E0B;&#x7684;&#x5F88;&#x591A;&#x4EE3;&#x7801;&#x90FD;&#x662F;&#x9488;&#x5BF9;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x5404;&#x79CD;&#x4F18;&#x5316;&#x63AA;&#x65BD;&#x3002;&#x5728;&#x4E0B;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E9B;&#x4F18;&#x5316;&#x63AA;&#x65BD;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="001.html" class="navigation navigation-prev " aria-label="Previous page: 01-scope中的Dirty Checking(脏数据检查)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="003.html" class="navigation navigation-next " aria-label="Next page: 03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"02-scope中的Dirty Checking(脏数据检查)--Digest Cycle","level":"1.4.2","depth":2,"next":{"title":"03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节","level":"1.4.3","depth":2,"path":"AngularJS面面观/003.md","ref":"AngularJS面面观/003.md","articles":[]},"previous":{"title":"01-scope中的Dirty Checking(脏数据检查)","level":"1.4.1","depth":2,"path":"AngularJS面面观/001.md","ref":"AngularJS面面观/001.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","autotheme","expandable-chapters","github","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/JoeyBling"},"livereload":{},"splitter":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"family":"serif","size":2},"highlight":{},"autotheme":{"night":[20,21,22,23,0,1,2,3,4,5],"sepia":[6,7,8,18,19,19],"white":[9,10,11,12,13,14,15,16,17]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{}},"theme":"default","author":"朱灌楠","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"朱灌楠","language":"zh-hans","gitbook":"*","description":"朱灌楠"},"file":{"path":"AngularJS面面观/002.md","mtime":"2021-02-26T04:04:19.577Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-01T03:59:46.430Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-autotheme/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

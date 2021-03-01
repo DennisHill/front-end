@@ -1,0 +1,782 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>关于继承的一点理解 · 朱灌楠</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="朱灌楠">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="原型.html" />
+    
+    
+    <link rel="prev" href="关于this那些事.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../css/">
+            
+                <a href="../css/">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    css
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../css/css的权重.html">
+            
+                <a href="../css/css的权重.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    css的权重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../css/flex布局.html">
+            
+                <a href="../css/flex布局.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    flex布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../css/实现元素的水平垂直居中.html">
+            
+                <a href="../css/实现元素的水平垂直居中.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    实现元素的水平垂直居中
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../css/小谈css3的动画.html">
+            
+                <a href="../css/小谈css3的动画.html">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    小谈css3的动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="call、apply的模拟实现.html">
+            
+                <a href="call、apply的模拟实现.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    call、apply的模拟实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="new操作符.html">
+            
+                <a href="new操作符.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    new操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="关于this那些事.html">
+            
+                <a href="关于this那些事.html">
+            
+                    
+                        <b>1.3.3.</b>
+                    
+                    关于this那些事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="关于继承的一点理解.html">
+            
+                <a href="关于继承的一点理解.html">
+            
+                    
+                        <b>1.3.4.</b>
+                    
+                    关于继承的一点理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="原型.html">
+            
+                <a href="原型.html">
+            
+                    
+                        <b>1.3.5.</b>
+                    
+                    原型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="如何实现bind.html">
+            
+                <a href="如何实现bind.html">
+            
+                    
+                        <b>1.3.6.</b>
+                    
+                    如何实现bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="实现对象的深拷贝.html">
+            
+                <a href="实现对象的深拷贝.html">
+            
+                    
+                        <b>1.3.7.</b>
+                    
+                    实现对象的深拷贝
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="数组那点事.html">
+            
+                <a href="数组那点事.html">
+            
+                    
+                        <b>1.3.8.</b>
+                    
+                    数组那点事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" >
+            
+                <span>
+            
+                    
+                        <b>1.3.9.</b>
+                    
+                    闭包
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.9.1" data-path="闭包-1.html">
+            
+                <a href="闭包-1.html">
+            
+                    
+                        <b>1.3.9.1.</b>
+                    
+                    闭包-1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.2" data-path="闭包-2.html">
+            
+                <a href="闭包-2.html">
+            
+                    
+                        <b>1.3.9.2.</b>
+                    
+                    闭包-2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.3" data-path="闭包-3.html">
+            
+                <a href="闭包-3.html">
+            
+                    
+                        <b>1.3.9.3.</b>
+                    
+                    闭包-3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.4" data-path="闭包-4.html">
+            
+                <a href="闭包-4.html">
+            
+                    
+                        <b>1.3.9.4.</b>
+                    
+                    闭包-4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9.5" data-path="闭包-5.html">
+            
+                <a href="闭包-5.html">
+            
+                    
+                        <b>1.3.9.5.</b>
+                    
+                    闭包-5
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../AngularJS面面观/">
+            
+                <a href="../AngularJS面面观/">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    AngularJS面面观
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../AngularJS面面观/001.html">
+            
+                <a href="../AngularJS面面观/001.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    01-scope中的Dirty Checking(脏数据检查)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../AngularJS面面观/002.html">
+            
+                <a href="../AngularJS面面观/002.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    02-scope中的Dirty Checking(脏数据检查)--Digest Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../AngularJS面面观/003.html">
+            
+                <a href="../AngularJS面面观/003.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../AngularJS面面观/004.html">
+            
+                <a href="../AngularJS面面观/004.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    04-scope中的$apply方法 - Digest Cycle的触发者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../前端知识/">
+            
+                <a href="../前端知识/">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    前端知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../前端知识/jsonp.html">
+            
+                <a href="../前端知识/jsonp.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    jsonp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../前端知识/从输入URL到页面展示发生了什么.html">
+            
+                <a href="../前端知识/从输入URL到页面展示发生了什么.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    从输入URL到页面展示发生了什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../前端知识/浏览器缓存.html">
+            
+                <a href="../前端知识/浏览器缓存.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    浏览器缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../前端知识/跨域.html">
+            
+                <a href="../前端知识/跨域.html">
+            
+                    
+                        <b>1.5.4.</b>
+                    
+                    跨域
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >关于继承的一点理解</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x4E00;&#x8EAB;&#x8F6C;&#x6218;&#x4E09;&#x5343;&#x91CC;&#xFF0C;&#x4E00;&#x5251;&#x66FE;&#x5F53;&#x767E;&#x4E07;&#x5E08;&#x3002;&#x2014;&#x2014;&#x738B;&#x7EF4;&#x300A;&#x8001;&#x5C06;&#x884C;&#x300B;</p>
+</blockquote>
+<p>&#x7EE7;&#x627F;&#x662F;OO&#x8BED;&#x8A00;&#x7684;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x3002;&#x5F88;&#x591A;OO&#x8BED;&#x8A00;&#x90FD;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x7EE7;&#x627F;&#x65B9;&#x5F0F;&#xFF1A;&#x63A5;&#x53E3;&#x7EE7;&#x627F;&#x548C;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x3002;&#x6BD4;&#x5982;&#xFF0C;<code>Java</code>&#x7684;<code>extend</code>&#x548C;<code>implement</code>&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x7531;&#x4E8E;&#x5728;<code>javascript</code>&#x4E2D;&#x6CA1;&#x6709;&#x51FD;&#x6570;&#x7B7E;&#x540D;&#x3002;&#x6240;&#x4EE5;&#xFF0C;<code>javascript</code>&#x53EA;&#x652F;&#x6301;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#xFF0C;&#x800C;&#x4E14;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x539F;&#x578B;&#x94FE;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<ol>
+<li><strong>&#x6BCF;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x539F;&#x578B;&#x5BF9;&#x8C61;(<code>prototype</code>&#x5BF9;&#x8C61;)</strong></li>
+<li><strong>&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x6307;&#x5411;&#x6784;&#x9020;&#x51FD;&#x6570;(<code>constructor</code>&#x5C5E;&#x6027;)</strong></li>
+<li><strong>&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;(<code>[[prototype]]</code>&#x5C5E;&#x6027;&#x3002;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x662F;<code>__proto__</code>)</strong></li>
+</ol>
+<blockquote>
+<p>&#x4EE5;&#x4E0A;&#x7ED3;&#x8BBA;&#xFF0C;&#x8BE6;&#x7EC6;&#x53EF;&#x770B;&#x300A;JavaScript&#x7684;&#x539F;&#x578B;&#x300B;&#x4E00;&#x6587;&#x3002;</p>
+</blockquote>
+<h5 id="&#x5F53;&#x67E5;&#x627E;javascript&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x4E2D;&#x627E;&#x4E0D;&#x5230;&#x5B9A;&#x4E49;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;prototype&#x4E2D;&#x67E5;&#x627E;&#x3002;&#x5982;&#x679C;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x4F9D;&#x7136;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED;&#x5728;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x539F;&#x578B;&#x4E2D;&#x67E5;&#x627E;&#x3002;&#x5982;&#x6B64;&#x7EE7;&#x7EED;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x4E3A;&#x6B62;&#xFF0C;&#x5982;&#x679C;&#x67E5;&#x627E;&#x5230;&#x6700;&#x9876;&#x5C42;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x4E5F;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x5C31;&#x7ED3;&#x675F;&#x67E5;&#x627E;&#xFF0C;&#x8FD4;&#x56DE;undefined&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x94FE;&#x5F0F;&#x7684;&#xFF0C;&#x6574;&#x4E2A;&#x94FE;&#x6761;&#x5C31;&#x662F;&#x539F;&#x578B;&#x94FE;">&#x5F53;&#x67E5;&#x627E;<code>JavaScript</code>&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x4E2D;&#x627E;&#x4E0D;&#x5230;&#x5B9A;&#x4E49;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;(<code>prototype</code>)&#x4E2D;&#x67E5;&#x627E;&#x3002;&#x5982;&#x679C;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x4F9D;&#x7136;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED;&#x5728;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x539F;&#x578B;&#x4E2D;&#x67E5;&#x627E;&#x3002;&#x5982;&#x6B64;&#x7EE7;&#x7EED;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x4E3A;&#x6B62;&#xFF0C;&#x5982;&#x679C;&#x67E5;&#x627E;&#x5230;&#x6700;&#x9876;&#x5C42;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x4E5F;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x5C31;&#x7ED3;&#x675F;&#x67E5;&#x627E;&#xFF0C;&#x8FD4;&#x56DE;<code>undefined</code>&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x94FE;&#x5F0F;&#x7684;&#xFF0C;&#x6574;&#x4E2A;&#x94FE;&#x6761;&#x5C31;&#x662F;&#x539F;&#x578B;&#x94FE;</h5>
+<blockquote>
+<p>&#x8FD9;&#x662F;&#x6211;&#x4E2A;&#x4EBA;&#x5173;&#x4E8E;&#x539F;&#x578B;&#x94FE;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x8BEF;&#xFF0C;&#x6254;&#x7816;&#x5934;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8F7B;&#x4E00;&#x70B9;&#x3002;</p>
+</blockquote>
+<h5 id="&#x90A3;&#x4E48;&#xFF0C;&#x5982;&#x679C;&#x5B9E;&#x73B0;&#x57FA;&#x4E8E;&#x539F;&#x578B;&#x94FE;&#x7684;&#x7EE7;&#x627F;&#x5462;&#xFF1F;">&#x90A3;&#x4E48;&#xFF0C;&#x5982;&#x679C;&#x5B9E;&#x73B0;&#x57FA;&#x4E8E;&#x539F;&#x578B;&#x94FE;&#x7684;&#x7EE7;&#x627F;&#x5462;&#xFF1F;</h5>
+<h5 id="&#x7B54;&#x6848;&#xFF1A;&#x624B;&#x52A8;&#x6539;&#x53D8;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x5411;">&#x7B54;&#x6848;&#xFF1A;&#x624B;&#x52A8;&#x6539;&#x53D8;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x5411;</h5>
+<pre><code>function SuperType (name) {
+    this.name = name;
+}
+
+SuperType.prototype.sayHi = function () {
+    console.log(this.name);
+}
+
+function SubType (name, age) {
+    SuperType.call(this, name);
+    this.age = age;
+}
+
+SubType.prototype = new SuperType();
+SubType.prototype.constructor = SubType;
+SubType.prototype.sayAge = function () {
+    console.log(this.age);
+}
+var instance = new SubType(&apos;Tom&apos;, 15);
+instance.sayHi(); // Tom
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x628A;<code>SubType.prototype</code>&#x8D4B;&#x503C;&#x4E3A;<code>SuperType</code>&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x5F53;<code>instance</code>&#x8C03;&#x7528;<code>sayHi</code>&#x65B9;&#x6CD5;&#x65F6;</p>
+<ol>
+<li>&#x5148;&#x5728;<code>instance</code>&#x672C;&#x8EAB;&#x67E5;&#x627E;<code>sayHi</code>&#x65B9;&#x6CD5;&#xFF0C;&#x53D1;&#x73B0;&#x5E76;&#x6CA1;&#x6709;</li>
+<li>&#x901A;&#x8FC7;<code>instance</code>&#x7684;<code>__proto__</code>&#x67E5;&#x627E;<code>sayHi</code>&#x65B9;&#x6CD5;&#x3002;<code>instance.__proto__</code>&#x6307;&#x5411;<code>SubType.prototype</code>&#x3002;&#x6B64;&#x65F6;&#xFF0C;<code>SubType.prototype</code>&#x88AB;&#x8D4B;&#x503C;&#x4E3A;<code>SuperType</code>&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x5728;&#x8BE5;&#x5B9E;&#x4F8B;&#x4E2D;&#x627E;<code>sayHi</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x3002;&#x4E8E;&#x662F;&#x901A;&#x8FC7;&#x8BE5;&#x5B9E;&#x4F8B;&#x7684;<code>__proto__</code>(&#x4E5F;&#x5C31;&#x662F;<code>SuperType.prototype</code>)&#x67E5;&#x627E;<code>sayHi</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x627E;&#x5230;&#x4E86;&#x8BE5;&#x65B9;&#x6CD5;</li>
+<li>&#x8C03;&#x7528;<code>SuperType.prototype.sayHi</code>&#x65B9;&#x6CD5;</li>
+</ol>
+<h4 id="&#x901A;&#x8FC7;&#x6539;&#x53D8;subtypeprototype&#xFF0C;&#x8FBE;&#x5230;subtype&#x7EE7;&#x627F;supertype&#x7684;&#x6548;&#x679C;">&#x901A;&#x8FC7;&#x6539;&#x53D8;<code>SubType.prototype</code>&#xFF0C;&#x8FBE;&#x5230;<code>SubType&#x7EE7;&#x627F;SuperType</code>&#x7684;&#x6548;&#x679C;</h4>
+<p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x7684;&#x6709;&#x4E00;&#x4E2A;&#x5F0A;&#x7AEF;&#x5728;&#x4E8E;&#xFF0C;&#x8C03;&#x7528;&#x4E86;&#x4E24;&#x6B21;<code>SuperType</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;&#x4E8E;&#x662F;&#x6539;&#x8FDB;&#x7248;&#x5982;&#x4E0B;</p>
+<pre><code>function inherit(child, parent) {
+    var prototype = Object.create(parent.prototype);
+    prototype.constructor = child;
+    child.prototype = prototype;
+}
+
+function SuperType (name) {
+    this.name = name;
+}
+
+SuperType.prototype.sayHi = function () {
+    console.log(this.name);
+}
+
+function SubType (name, age) {
+    SuperType.call(this, name);
+    this.age = age;
+}
+
+inherit(SubType, SuperType);
+SubType.prototype.sayAge = function () {
+    console.log(this.age);
+}
+var instance = new SubType(&apos;Tom&apos;, 15);
+instance.sayHi(); // Tom
+console.log(instance instanceof SubType); // true
+console.log(instance instanceof SuperType); // true
+console.log(instance instanceof Object); //true
+</code></pre><h5 id="&#x901A;&#x8FC7;objectcreate&#x62F7;&#x8D1D;&#x4E00;&#x4E2A;&#x8D85;&#x7C7B;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x526F;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x4E3A;&#x5B50;&#x7C7B;&#x7684;&#x539F;&#x578B;&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x8D85;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;">&#x901A;&#x8FC7;<code>Object.create</code>&#x62F7;&#x8D1D;&#x4E00;&#x4E2A;&#x8D85;&#x7C7B;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x526F;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x4E3A;&#x5B50;&#x7C7B;&#x7684;&#x539F;&#x578B;&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x8D85;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</h5>
+<blockquote>
+<p>&#x4EE5;&#x4E0A;&#xFF0C;&#x6211;&#x5BF9;&#x7EE7;&#x627F;&#x7684;&#x7406;&#x89E3;&#x3002;&#x7531;&#x4E8E;&#x672C;&#x4EBA;&#x5B66;&#x8BC6;&#x6709;&#x9650;&#xFF0C;&#x8C2C;&#x8BEF;&#x4E4B;&#x5904;&#xFF0C;&#x8FD8;&#x8BF7;&#x6307;&#x6B63;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="关于this那些事.html" class="navigation navigation-prev " aria-label="Previous page: 关于this那些事">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="原型.html" class="navigation navigation-next " aria-label="Next page: 原型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"关于继承的一点理解","level":"1.3.4","depth":2,"next":{"title":"原型","level":"1.3.5","depth":2,"path":"js/原型.md","ref":"js/原型.md","articles":[]},"previous":{"title":"关于this那些事","level":"1.3.3","depth":2,"path":"js/关于this那些事.md","ref":"js/关于this那些事.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","autotheme","expandable-chapters","github","splitter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/JoeyBling"},"livereload":{},"splitter":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"family":"serif","size":2},"highlight":{},"autotheme":{"night":[20,21,22,23,0,1,2,3,4,5],"sepia":[6,7,8,18,19,19],"white":[9,10,11,12,13,14,15,16,17]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{}},"theme":"default","author":"朱灌楠","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"朱灌楠","language":"zh-hans","gitbook":"*","description":"朱灌楠"},"file":{"path":"js/关于继承的一点理解.md","mtime":"2020-03-30T03:20:12.835Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-01T03:59:46.430Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-autotheme/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

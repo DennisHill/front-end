@@ -29,6 +29,9 @@
     - [从输入URL到页面展示发生了什么](前端知识/从输入URL到页面展示发生了什么.md)
     - [浏览器缓存](前端知识/浏览器缓存.md)
     - [跨域](前端知识/跨域.md)
+    - [为什么https比http安全](前端知识/为什么https比http安全.md)
+* [面试题](面试题/README.md)
+  - [多个tab页如何共享websocket](面试题/多个tab页如何共享websocket.md)
 
 
 

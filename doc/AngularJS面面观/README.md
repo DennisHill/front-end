@@ -1,4 +1,4 @@
-- [01-scope中的Dirty Checking(脏数据检查)](AngularJS面面观/001.md)
-- [02-scope中的Dirty Checking(脏数据检查)--Digest Cycle](AngularJS面面观/002.md)
-- [03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节](AngularJS面面观/003.md)
-- [04-scope中的$apply方法 - Digest Cycle的触发者](AngularJS面面观/004.md)
+- [01-scope中的Dirty Checking(脏数据检查)](001.md)
+- [02-scope中的Dirty Checking(脏数据检查)--Digest Cycle](002.md)
+- [03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节](003.md)
+- [04-scope中的$apply方法 - Digest Cycle的触发者](004.md)

@@ -1,14 +1,9 @@
-var path = require('path');
-var fs = require('fs');
+beginPhase('$digest'); // Check for changes to browser url that happened in sync before the call to $digest
+$browser.$$checkUrlChange();
 
-var jsFileList = fs.readdirSync(path.resolve(__dirname, 'doc/AngularJS面面观'))
-
-var ret = [];
-
-jsFileList.forEach(file => {
-  ret.push(`- [${file.split('.')[0]}](AngularJS面面观/${file})`)
-})
-
-
-
-console.log(ret.join('\n'))
+if (this === $rootScope && applyAsyncId !== null) { // If this is the root scope, and $applyAsync has scheduled a
+  deferred;
+  $apply(), then; // cancel the scheduled $apply and flush the queue of expressions to be evaluated.
+  $browser.defer.cancel(applyAsyncId);
+  flushApplyAsync();
+}

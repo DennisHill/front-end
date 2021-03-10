@@ -48,6 +48,7 @@ element.addEventListener('transitionstart', function() {
 6. animation-play-state：允许暂停和恢复动画。
 7. animation-timing-function：设置动画速度，即通过建立加速度曲线，设置动画在关键帧之间是如何变化。
 8. animation-fill-mode：指定动画执行前后如何为目标元素应用样式
+
 ```
 p {
     animation: slidein 3s;
@@ -67,6 +68,7 @@ p {
 ```
 
 主要说一下`animation-fill-mode`这个属性值。有时会发现，如果不设置该属性，动画执行完之后，会保持初始样式。这是我们所不希望的，可设置该属性为`forwards`。
+
 ```
 p {
     animation: slidein 3s ease-in forwards;
@@ -74,6 +76,7 @@ p {
 ```
 
 同时，`animation`也有对应的若干事件
+
 ```
 element.addEventListener("animationstart", listener, false);
 element.addEventListener("animationend", listener, false);

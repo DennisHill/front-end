@@ -24,6 +24,8 @@
     - [02-scope中的Dirty Checking(脏数据检查)--Digest Cycle](AngularJS面面观/002.md)
     - [03-scope中的Dirty Checking(脏数据检查) --- Digest Cycle中的优化和细节](AngularJS面面观/003.md)
     - [04-scope中的$apply方法 - Digest Cycle的触发者](AngularJS面面观/004.md)
+    - [05-scope中的两个异步方法 - $applyAsync以及$evalAsync](AngularJS面面观/005.md)
+    - [06-scope继承 - 基于原型继承的树形体系以及scope的生命周期](AngularJS面面观/006.md)
 * [前端知识](前端知识/README.md)
     - [jsonp](前端知识/jsonp.md)
     - [从输入URL到页面展示发生了什么](前端知识/从输入URL到页面展示发生了什么.md)
@@ -31,7 +33,7 @@
     - [跨域](前端知识/跨域.md)
     - [为什么https比http安全](前端知识/为什么https比http安全.md)
 * [面试题](面试题/README.md)
-  - [多个tab页如何共享websocket](面试题/多个tab页如何共享websocket.md)
+    - [多个tab页如何共享websocket](面试题/多个tab页如何共享websocket.md)
 
 
 

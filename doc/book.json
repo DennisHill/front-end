@@ -1,0 +1,59 @@
+{
+  "plugins": [
+    "-search",
+    "-sharing",
+    "sharing-plus",
+    "expandable-chapters",
+    "github",
+    "splitter",
+    "github-buttons"
+  ],
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": false
+    },
+    "sharing": {
+      "douban": false,
+      "facebook": false,
+      "google": false,
+      "hatenaBookmark": false,
+      "instapaper": false,
+      "line": false,
+      "linkedin": false,
+      "messenger": false,
+      "pocket": false,
+      "qq": true,
+      "qzone": true,
+      "stumbleupon": false,
+      "twitter": false,
+      "viber": false,
+      "vk": false,
+      "weibo": true,
+      "whatsapp": false,
+      "all": [
+        "douban",
+        "qq",
+        "qzone",
+        "weibo"
+      ]
+    },
+    "github-buttons": {
+      "buttons": [
+        {
+          "user": "DennisHill",
+          "repo": "front-end",
+          "type": "star",
+          "size": "small",
+          "count": false
+        }
+      ]
+    },
+    "github": {
+      "url": "https://github.com/DennisHill/front-end"
+    }
+  },
+  "title": "朱灌楠",
+  "description": "朱灌楠",
+  "author": "朱灌楠",
+  "language": "zh-hans"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "尝试把自己明白的知识总结出来，在总结的过程中，进一步加深印象，这就是我建立这个项目的目的。",
+  "main": "index.js",
+  "scripts": {
+    "init": "cd doc && gitbook init",
+    "docBuild": "cd doc && gitbook build",
+    "docServer": "cd doc && gitbook serve --port 6001",
+    "docBuild:pdf": "cd doc && gitbook pdf ./ ./proudsmart-ui.pdf",
+    "bookInstall": "cd doc && gitbook install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DennisHill/front-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DennisHill/front-end/issues"
+  },
+  "homepage": "https://github.com/DennisHill/front-end#readme",
+  "dependencies": {
+    "gitbook-cli": "^2.3.2"
+  }
+}
